@@ -52,7 +52,6 @@ def get_fixed_filename(filename):
     # First, replace the spaces and .TXT (the easy part)
     filename = filename.replace(" ", "_").replace(".TXT", ".txt")
 
-    new_name = ""
     fixed_filename = filename[0].upper()
     for character in filename[1:filename.find('.')]:
 
@@ -63,7 +62,7 @@ def get_fixed_filename(filename):
                 fixed_filename = fixed_filename + character
 
         elif character.isupper():
-            if fixed_filename[-1] == '_' or fixed_filename[-1] == '(' or fixed_filename[-1] == ')':
+            if fixed_filename[-1] == '_' or fixed_filename[-1] == '(':
                 fixed_filename = fixed_filename + character
             else:
                 fixed_filename = fixed_filename + '_'
@@ -74,5 +73,6 @@ def get_fixed_filename(filename):
 
     new_name = ''.join(fixed_filename) + filename[filename.find('.'):]
     return new_name
+
 
 main()
