@@ -53,9 +53,26 @@ def get_fixed_filename(filename):
     filename = filename.replace(" ", "_").replace(".TXT", ".txt")
 
     new_name = ""
-    # TODO: step-by-step, consider the problem cases and solve them
+    fixed_filename = filename[0].upper()
+    for character in filename[1:filename.find('.')]:
 
+        if character.islower():
+            if fixed_filename[-1] == '_' or fixed_filename[-1] == '(' or fixed_filename[-1] == ')':
+                fixed_filename = fixed_filename + character.upper()
+            else:
+                fixed_filename = fixed_filename + character
+
+        elif character.isupper():
+            if fixed_filename[-1] == '_' or fixed_filename[-1] == '(' or fixed_filename[-1] == ')':
+                fixed_filename = fixed_filename + character
+            else:
+                fixed_filename = fixed_filename + '_'
+                fixed_filename = fixed_filename + character
+
+        else:
+            fixed_filename = fixed_filename + character
+
+    new_name = ''.join(fixed_filename) + filename[filename.find('.'):]
     return new_name
-
 
 main()
