@@ -16,8 +16,10 @@ def main():
     print(os.listdir('.'))
 
     # make a new directory
-    # os.mkdir('temp')
-
+    try:
+        os.mkdir('temp')
+    except FileExistsError:
+        pass
     # loop through each file in the (original) directory
     for filename in os.listdir('.'):
         # ignore directories, just process files
@@ -36,7 +38,7 @@ def main():
             # os.rename(filename, new_name)
 
             # Option 2: move file to new place, with new name
-            # shutil.move(filename, 'temp/' + new_name)
+            shutil.move(filename, 'temp/' + new_name)
 
             # Processing subdirectories using os.walk()
 
