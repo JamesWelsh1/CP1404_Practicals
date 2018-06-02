@@ -6,6 +6,7 @@ BoxLayout:
             text: '34'
             font_size: 60
             id: input_miles
+            on_text: app.handle_convert()
         BoxLayout:
             orientation: 'vertical'
             size_hint_x: 0.3
@@ -17,3 +18,4 @@ BoxLayout:
                 on_release: app.handle_increment(-1)
     Label:
         id: answer_label
+        text: '54.71756'
