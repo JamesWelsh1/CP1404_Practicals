@@ -15,17 +15,20 @@ class ConvertMilesToKilometersApp(App):
     def handle_convert(self):
         value = self.get_input_miles()
         converted_result = value * M_TO_KM
-        print(converted_result)
         self.root.ids.answer_label.text = str(converted_result)
 
     def handle_increment(self, increment):
         value = self.get_input_miles() + increment
         self.root.ids.input_miles.text = str(value)
-        pass
+        self.handle_convert()
 
     def get_input_miles(self):
-        value = float(self.root.ids.input_miles.text)
-        return value
+        try:
+            value = float(self.root.ids.input_miles.text)
+            return value
+        except ValueError:
+            return 0.0
+
 
 
 ConvertMilesToKilometersApp().run()
